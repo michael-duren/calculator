@@ -34,7 +34,7 @@ app.get('/calc', (req, res) => {
   res.send(JSON.stringify(result));
 });
 
-app.get('/calc', (req, res) => {
+app.post('/clear', (req, res) => {
   res.sendStatus(201);
   equation = [];
   result = 0;
