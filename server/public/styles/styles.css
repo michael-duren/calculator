@@ -87,12 +87,17 @@ button {
   font-size: 5rem;
   font-family: var(--ff-serif);
   width: 100%;
+  min-height: 10rem;
   justify-content: end;
   align-items: center;
 }
 
 .entry {
   margin-right: 2rem;
+}
+
+.entry-empty {
+  color: hsl(var(--clr-white) / 0.5);
 }
 
 .number {
