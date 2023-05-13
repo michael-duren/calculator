@@ -1,6 +1,9 @@
 import express, { Request, Response } from 'express';
 
+interface HistoryItem {}
+
 let equationArray = [];
+const history: HistoryItem[] = [];
 let result: number;
 
 const app = express();
@@ -13,13 +16,14 @@ app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 app.use(express.static('server/public/'));
 
 app.post('/calc', (req: Request, res: Response) => {
-  equationArray = req.body;
-  result = eval(equationArray.join(' '));
-  console.log(equationArray.join(' '));
+  const calculation = req.body.join(' ');
+  result = eval(calculation);
+  console.log(calculation);
   equationArray = [];
+  history.push({ calculation, result });
 
   res.sendStatus(201);
-  console.log(result);
+  console.log(history);
 });
 
 app.get('/calc', (req: Request, res: Response) => {

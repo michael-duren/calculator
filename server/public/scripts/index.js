@@ -43,8 +43,6 @@ function addToOperation(event) {
       calculation[calculation.length - 1] += number;
     }
   }
-
-  console.log(calculation);
 }
 
 function invertPolarity() {
