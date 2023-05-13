@@ -1,6 +1,7 @@
 import express from 'express';
 
 let equation = [];
+let result: number;
 
 const app = express();
 const PORT = 5000;
@@ -22,6 +23,19 @@ app.post('/calc', (req, res) => {
     }
   }
 
+  result = eval(parsedEquation);
+
   res.sendStatus(201);
   console.log(parsedEquation);
+  console.log(result);
+});
+
+app.get('/calc', (req, res) => {
+  res.send(JSON.stringify(result));
+});
+
+app.get('/calc', (req, res) => {
+  res.sendStatus(201);
+  equation = [];
+  result = 0;
 });

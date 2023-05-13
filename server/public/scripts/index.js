@@ -24,9 +24,13 @@ function addToOperation(event) {
 }
 
 function clearOperation() {
-  entryId.innerHTML = '0';
-  calculation = [];
-  entryId.classList.add('entry-empty');
+  fetch('/clear', {
+    method: 'POST',
+  }).then(() => {
+    entryId.innerHTML = '0';
+    entryId.classList.add('entry-empty');
+    calculation = [];
+  });
 }
 
 function submitOperation() {
@@ -36,5 +40,13 @@ function submitOperation() {
     headers: {
       'Content-Type': 'application/json',
     },
+  }).then(() => {
+    fetch('/calc')
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+        entryId.innerText = result;
+        calculation = [];
+      });
   });
 }
