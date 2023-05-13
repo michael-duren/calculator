@@ -4,6 +4,7 @@
   --clr-gray: 0 0% 19%;
   --clr-gray-light: 240 0% 63%;
   --clr-orange: 37 96% 49%;
+  --clr-orange-light: 37 96% 67%;
   --clr-white: 0 0% 97%;
 
   --ff-serif: 'Roboto', sans-serif;
@@ -125,7 +126,7 @@ button {
 }
 
 .secondary {
-  background-color: hsl(var(--clr-gray-light));
+  background-color: hsl(var(--clr-gray-light) / 0.9);
   margin: 1rem;
   color: hsl(var(--clr-gray));
   height: 5rem;
@@ -146,8 +147,12 @@ button {
   aspect-ratio: 1;
 }
 
+.operator:hover {
+  background-color: hsl(var(--clr-orange-light));
+}
+
 .secondary:hover {
-  background-color: hsl(var(--clr-gray-light) / 0.8);
+  background-color: hsl(var(--clr-gray-light));
 }
 
 .number:hover,
