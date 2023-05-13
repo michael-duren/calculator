@@ -17,10 +17,34 @@ function addToOperation(event) {
     number !== '.'
   ) {
     entryId.innerHTML = '';
+    calculation.push(number);
+  } else {
+    entryId.innerHTML += number;
+    if (isNaN(calculation[calculation.length - 1])) {
+      calculation.push(number);
+    } else {
+      calculation[calculation.length - 1] += number;
+    }
   }
 
-  entryId.innerHTML += number;
-  calculation.push(number);
+  console.log(calculation);
+}
+
+function invertPolarity() {
+  // get value of entry
+  calculation[calculation.length - 1] = togglePolarity(
+    calculation[calculation.length - 1]
+  );
+  const tmp = entryId.innerHTML;
+  entryId.innerHTML = togglePolarity(tmp);
+}
+
+function togglePolarity(numString) {
+  if (numString.includes('-')) {
+    return numString.replace('-', '');
+  } else {
+    return `-${numString}`;
+  }
 }
 
 function clearOperation() {

@@ -10,6 +10,7 @@
 	<link
 		href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:ital,wght@0,400;0,700;1,300&display=swap"
 		rel="stylesheet">
+	<link rel="icon" href="./favicon.ico">
 	<link rel="stylesheet" href="styles/styles.css">
 	<title>Server Calculator</title>
 </head>
@@ -24,7 +25,7 @@
 					<div class="display"><span id="entry" class="entry-empty entry">0</span></div>
 					<!-- Row 1 -->
 					<button onclick="clearOperation()" class="secondary">AC</button>
-					<button onclick="addToOperation(event)" class="secondary">+/-</button>
+					<button onclick="invertPolarity()" class="secondary">+/-</button>
 					<button onclick="addToOperation(event)" class="secondary">%</button>
 					<button onclick="addToOperation(event)" class="operator">/</button>
 					<!-- row 2 -->
