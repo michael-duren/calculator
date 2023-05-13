@@ -36,7 +36,7 @@ body {
     100deg,
     rgba(255, 255, 255, 1) 0%,
     rgba(210, 101, 201, 0.3) 62%,
-    rgba(0, 212, 255, 0.3) 75%,
+    rgba(0, 212, 255, 0.1) 75%,
     rgba(255, 255, 255, 1) 100%
   );
 }
@@ -63,7 +63,7 @@ main {
   justify-content: center;
   min-height: 100vh;
   width: 100%;
-  gap: 2rem;
+  gap: 8rem;
 }
 
 /* Calculator */
@@ -175,13 +175,13 @@ main {
 /* History */
 .history-container {
   width: 20rem;
-  height: 49.125rem;
-  background-color: rgb(0 0 0 / 0.1);
+  /* background-color: rgb(0 0 0 / 0.1); */
   padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 2rem;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.1);
 }
 
 .history-menu {
@@ -193,10 +193,16 @@ main {
 
 .history-title {
   font-size: 2rem;
+  color: hsl(var(--clr-gray));
 }
 
 .clear-button {
   background: none;
+  color: hsl(var(--clr-gray) / 0.5);
+}
+
+.clear-button:hover {
+  color: hsl(var(--clr-gray));
 }
 
 .history-items {
@@ -210,5 +216,6 @@ main {
 
 .history-items div {
   font-size: 1rem;
-  margin: 1rem 0;
+  margin: 0.7rem 0;
+  color: hsl(var(--clr-gray));
 }
