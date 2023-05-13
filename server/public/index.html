@@ -17,7 +17,7 @@
 
 <body>
 	<main>
-
+		<!-- Calculator -->
 		<div class="calc">
 			<div class="calc-body">
 				<div class="controls">
@@ -51,6 +51,15 @@
 					<button onclick="submitOperation()" class=" operator">=</button>
 				</div>
 			</div>
+		</div>
+
+		<!-- History -->
+		<div class="history-container">
+			<div class="history-menu">
+				<h2 class="history-title">History</h2>
+				<button onclick="clearHistory()" class="clear-button">clear</button>
+			</div>
+			<div id="history-items" class="history-items"></div>
 		</div>
 	</main>
 	<script src="scripts/index.js"></script>

@@ -1,9 +1,12 @@
 import express, { Request, Response } from 'express';
 
-interface HistoryItem {}
+interface HistoryItem {
+  calculation: string;
+  result: number;
+}
 
 let equationArray = [];
-const history: HistoryItem[] = [];
+let history: HistoryItem[] = [];
 let result: number;
 
 const app = express();
@@ -27,12 +30,10 @@ app.post('/calc', (req: Request, res: Response) => {
 });
 
 app.get('/calc', (req: Request, res: Response) => {
-  res.send(JSON.stringify(result));
+  res.send(JSON.stringify({ result, history }));
 });
 
-// not necesassry since result is already re assigned on next calculation
-app.post('/clear', (req, res) => {
+app.delete('/clear', (req: Request, res: Response) => {
+  history = [];
   res.sendStatus(201);
-  equationArray = [];
-  result = 0;
 });

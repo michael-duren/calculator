@@ -3,7 +3,17 @@ console.log("Hey there buddy I'm not your pal, guy");
 // global
 const entryId = document.querySelector('#entry');
 
+// current calculation
 let calculation = [];
+
+const historyId = document.querySelector('#history-items');
+
+// get history after a refresh
+fetch('/calc')
+  .then((response) => response.json())
+  .then((responseObj) => {
+    historyId.innerHTML = renderHistory(responseObj.history);
+  });
 
 function addToOperation(event) {
   // get num to add
@@ -66,13 +76,9 @@ function togglePolarity(numString) {
 }
 
 function clearOperation() {
-  fetch('/clear', {
-    method: 'POST',
-  }).then(() => {
-    entryId.innerHTML = '0';
-    entryId.classList.add('entry-empty');
-    calculation = [];
-  });
+  entryId.innerHTML = '0';
+  entryId.classList.add('entry-empty');
+  calculation = [];
 }
 
 function submitOperation() {
@@ -85,11 +91,26 @@ function submitOperation() {
   }).then(() => {
     fetch('/calc')
       .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-        entryId.innerText = result;
+      .then((responseObj) => {
+        console.log(responseObj);
+        entryId.innerText = responseObj.result;
         entryId.classList.add('equated');
         calculation = [];
+        historyId.innerHTML = renderHistory(responseObj.history);
       });
+  });
+}
+
+function renderHistory(historyArr) {
+  return historyArr.reduce((a, b) => {
+    return a + `<div>${b.calculation} = ${b.result}</div>`;
+  }, '');
+}
+
+function clearHistory() {
+  fetch('/clear', {
+    method: 'DELETE',
+  }).then(() => {
+    historyId.innerHTML = '';
   });
 }
