@@ -6,7 +6,10 @@ const entryId = document.querySelector('#entry');
 let calculation = [];
 
 function addToOperation(event) {
+  // get num to add
   const number = event.target.outerText;
+
+  // check for classes
   if (entryId.classList.contains('entry-empty')) {
     entryId.innerHTML = '';
     entryId.classList.remove('entry-empty');
@@ -17,14 +20,22 @@ function addToOperation(event) {
     entryId.classList.remove('equated');
   }
 
-  if (
-    (isNaN(Number(number)) || isNaN(Number(entryId.innerText))) &&
-    number !== '.'
-  ) {
+  if (isNaN(entryId.innerText)) {
+    entryId.innerText = '';
+  }
+  // check for operators
+  if (isNaN(number) && number !== '.') {
+    // check that the last entered item was not an operator
+    if (isNaN(calculation[calculation.length - 1])) {
+      return;
+    }
     entryId.innerHTML = '';
     entryId.innerHTML = number;
     calculation.push(number);
-  } else {
+  }
+
+  // add number
+  else {
     entryId.innerHTML += number;
     if (isNaN(calculation[calculation.length - 1])) {
       calculation.push(number);
@@ -38,6 +49,9 @@ function addToOperation(event) {
 
 function invertPolarity() {
   // get value of entry
+  if (calculation.length <= 0) {
+    return;
+  }
   calculation[calculation.length - 1] = togglePolarity(
     calculation[calculation.length - 1]
   );
