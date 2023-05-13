@@ -14,21 +14,11 @@ app.use(express.static('server/public/'));
 
 app.post('/calc', (req: Request, res: Response) => {
   equationArray = req.body;
-  let parsedEquation = '';
-  for (let item of equationArray) {
-    if (isNaN(Number(item)) && item !== '.') {
-      parsedEquation += ` ${item} `;
-    } else {
-      parsedEquation += item;
-    }
-  }
-  console.log(equationArray);
-
-  result = eval(parsedEquation);
+  result = eval(equationArray.join(' '));
+  console.log(equationArray.join(' '));
   equationArray = [];
 
   res.sendStatus(201);
-  console.log(parsedEquation);
   console.log(result);
 });
 

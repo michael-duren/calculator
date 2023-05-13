@@ -12,11 +12,17 @@ function addToOperation(event) {
     entryId.classList.remove('entry-empty');
   }
 
+  if (entryId.classList.contains('equated')) {
+    entryId.innerHTML = '';
+    entryId.classList.remove('equated');
+  }
+
   if (
     (isNaN(Number(number)) || isNaN(Number(entryId.innerText))) &&
     number !== '.'
   ) {
     entryId.innerHTML = '';
+    entryId.innerHTML = number;
     calculation.push(number);
   } else {
     entryId.innerHTML += number;
@@ -70,6 +76,7 @@ function submitOperation() {
       .then((result) => {
         console.log(result);
         entryId.innerText = result;
+        entryId.classList.add('equated');
         calculation = [];
       });
   });
