@@ -41,6 +41,26 @@ body {
   );
 }
 
+::-webkit-scrollbar {
+  width: 0.75rem;
+}
+
+::-webkit-scrollbar-track {
+  margin-block: 0.2rem;
+  background: none;
+  border-radius: 100vw;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(0 0 0 / 0.1);
+  border-radius: 100vw;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(0 0 0 / 0.2);
+  border-radius: 100vw;
+}
+
 input,
 button,
 textarea,
@@ -174,8 +194,8 @@ main {
 
 /* History */
 .history-container {
-  width: 20rem;
-  /* background-color: rgb(0 0 0 / 0.1); */
+  width: 30rem;
+  max-height: 45rem;
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -206,6 +226,8 @@ main {
 }
 
 .history-items {
+  overflow-y: scroll;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   width: 100%;
