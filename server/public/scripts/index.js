@@ -15,6 +15,21 @@ fetch('/calc')
     historyId.innerHTML = renderHistory(responseObj.history);
   });
 
+// listen for keyup
+document.addEventListener('keyup', (event) => {
+  const regex = /\d|[\/\+\-\*\%]/;
+  if (regex.test(event.key)) {
+    event.preventDefault();
+    addToOperation(event.key);
+  } else if (event.key === 'Enter') {
+    event.preventDefault();
+    submitOperation();
+  } else if (event.key === 'Escape') {
+    event.preventDefault();
+    clearOperation();
+  }
+});
+
 function onClickAddToOperation(event) {
   const number = event.target.outerText;
   addToOperation(number);
