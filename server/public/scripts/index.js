@@ -99,6 +99,10 @@ function clearOperation() {
 }
 
 function submitOperation() {
+  if (calculation.length < 1 || calculation.length % 2 === 0) {
+    return;
+  }
+
   fetch('/calc', {
     method: 'POST',
     body: JSON.stringify({ calculation }),
