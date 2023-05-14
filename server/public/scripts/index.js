@@ -15,10 +15,12 @@ fetch('/calc')
     historyId.innerHTML = renderHistory(responseObj.history);
   });
 
-function addToOperation(event) {
-  // get num to add
+function onClickAddToOperation(event) {
   const number = event.target.outerText;
+  addToOperation(number);
+}
 
+function addToOperation(number) {
   // check for classes
   if (entryId.classList.contains('entry-empty')) {
     entryId.innerHTML = '';
