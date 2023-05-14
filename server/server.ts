@@ -10,7 +10,6 @@ type OperatorFun = (a: number, b: number) => number;
 
 // state
 
-let equationArray = [];
 let history: HistoryItem[] = [];
 let result: number;
 
@@ -29,20 +28,16 @@ app.use(express.static('server/public/'));
 
 app.post('/calc', (req: Request, res: Response) => {
   const calculation = req.body.calculation;
-  console.log(calculation);
-  console.log('evealuator', validateArray(calculation));
+
   // validateArray returns true if every item is either a number or operator
   if (validateArray(calculation) !== true) {
     res.sendStatus(409);
     return;
   }
   result = calculateResult(calculation);
-  console.log(calculation);
-  equationArray = [];
   history.push({ calculation: calculation.join(' '), result });
 
   res.sendStatus(201);
-  console.log(history);
 });
 
 app.get('/calc', (req: Request, res: Response) => {
@@ -55,7 +50,6 @@ app.delete('/clear', (req: Request, res: Response) => {
 });
 
 // functions
-
 function getOperator(stringOp: string): OperatorFun {
   switch (stringOp) {
     case '+':
