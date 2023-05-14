@@ -84,7 +84,7 @@ function clearOperation() {
 function submitOperation() {
   fetch('/calc', {
     method: 'POST',
-    body: JSON.stringify(calculation),
+    body: JSON.stringify({ calculation }),
     headers: {
       'Content-Type': 'application/json',
     },

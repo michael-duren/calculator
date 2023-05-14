@@ -28,7 +28,14 @@ app.use(express.static('server/public/'));
 // api requests
 
 app.post('/calc', (req: Request, res: Response) => {
-  const calculation = req.body;
+  const calculation = req.body.calculation;
+  console.log(calculation);
+  console.log('evealuator', validateArray(calculation));
+  // validateArray returns true if every item is either a number or operator
+  if (validateArray(calculation) !== true) {
+    res.sendStatus(409);
+    return;
+  }
   result = calculateResult(calculation);
   console.log(calculation);
   equationArray = [];
@@ -82,7 +89,8 @@ function calculateResult(calcArr: string[]): number {
   return +newCalc[0];
 }
 
-// validation \d|\/|\+|\-|\*|\%
-// function validateArray(calcArr: string[]): boolean {
-
-// }
+function validateArray(calcArr: string[]): boolean {
+  const regex = /\d+|[\/\+\-\*\%]/;
+  const validator = (item: string) => regex.test(item);
+  return calcArr.every((item) => validator(item));
+}
