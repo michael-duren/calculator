@@ -39,7 +39,7 @@ app.get('/calc', (req, res) => {
 
 app.delete('/clear', (req, res) => {
   history = [];
-  res.sendStatus(201);
+  res.sendStatus(202);
 });
 
 // functions
