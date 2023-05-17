@@ -4,7 +4,8 @@
   "description": "[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec ts-node server/server.ts"
+    "dev": "nodemon --exec ts-node server/server.ts",
+    "start": "nodemon --exec ts-node server/server.ts"
   },
   "keywords": [],
   "author": "",
