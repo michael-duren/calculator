@@ -2,7 +2,8 @@
 
 ## Description
 
-A simple calculator app that stores your history. You can use the keys on your keyboard to enter operations as well as the buttons.
+- Click [here](https://infinite-citadel-47213.herokuapp.com) to go to the live app.
+- A simple calculator app that stores your history. You can use the keys on your keyboard to enter operations as well as the buttons.
 
 ![Image of App](./images/demo.png)
 
